@@ -1,0 +1,15 @@
+[package]
+name = "bosonic_processor"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+num-complex = "0.4.3"
+num-traits = "0.2.15"
+rayon = "1.7.0"
+
+[dev-dependencies]
+ndarray = "0.15.6"
+ndarray_einsum_beta = "0.7.0"
+rand = "0.8.5"
