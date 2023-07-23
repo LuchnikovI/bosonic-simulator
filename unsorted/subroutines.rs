@@ -166,26 +166,3 @@ mod subroutines_utils {
 
 }
 
-// ----------------------------------------------------------------------------------------
-
-use subroutines_utils::*;
-
-unsafe fn apply_term<const N: usize, T: ComplexFloat>(
-    dst: *mut Complex<T>,
-    src: *const Complex<T>,
-    all_encodings: &[usize],
-    terms: &[Term; N],
-    delta: Complex<T>,
-)
-{
-    let mut terms = *terms;
-    terms.sort();
-    let size = get_batch_size(all_encodings, &terms);
-    let target_encodings = get_target_encodings(all_encodings, &terms);
-    let strides = get_strides(all_encodings, &terms);
-    let masks = get_masks(&strides);
-    for index in 0..size {
-        let bindex = get_batch_index(index, &masks, &target_encodings);
-        
-    }
-}
