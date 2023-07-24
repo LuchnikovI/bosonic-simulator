@@ -1,4 +1,6 @@
 /target
 *.pdf
-*.yaml
 *.pickle
+*.sif
+*.def
+/tasks/bosonic_processor
