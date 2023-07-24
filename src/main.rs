@@ -49,8 +49,8 @@ where
     match task {
         Task::ChebyshevDynamics(task) => {
             let density_matrices = task.run(order, acc);
-            let yaml_string = serde_yaml::to_string(&density_matrices).unwrap();
-            write(output_path, yaml_string).expect("impossible write results to a file");
+            let pickled_result = serde_pickle::to_vec(&density_matrices, Default::default()).unwrap();
+            write(output_path, pickled_result).expect("impossible write results to a file");
         },
     }
 }
