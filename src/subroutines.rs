@@ -180,3 +180,20 @@ pub(super) fn state_cpy<T: Value>(
         *d = *s;
     });
 }
+
+pub(super) fn init_custom<T: Value>(
+    particles_number_per_mode: &[usize],
+    all_encodings: &[usize],
+) -> Vec<T>
+{
+    let mut index = 0usize;
+    for (particles_num, qubits_num)
+    in particles_number_per_mode[1..].into_iter().zip(all_encodings).rev() {
+        index += *particles_num;
+        index *= 2usize.pow(*qubits_num as u32);
+    }
+    index += particles_number_per_mode[0];
+    let mut state = init_zero(all_encodings);
+    state[index] = T::one();
+    state
+}

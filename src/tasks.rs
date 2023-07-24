@@ -14,6 +14,7 @@ use crate::subroutines::{
     get_density,
     init_zero,
     set2zero,
+    init_custom,
 };
 
 #[derive(
@@ -77,6 +78,7 @@ where
     T: ComplexFloat
 {
     qubits_per_mode: Vec<usize>,
+    init_state: Vec<usize>,
     total_time_steps_number: usize,
     time_step_size: T::Real,
     hamiltonian: Vec<TermAndAmpl<T>>,
@@ -106,7 +108,7 @@ where
 {
     pub fn run(&self, order: usize, acc: T::Real) -> Vec<Vec<Vec<T>>>
     {
-        let mut state = init_std::<T>(&self.qubits_per_mode);
+        let mut state = init_custom::<T>(&self.init_state, &self.qubits_per_mode);
         let mut exp = init_zero::<T>(&self.qubits_per_mode);
         let mut aux = init_zero::<T>(&self.qubits_per_mode);
         let mut density_matrices = vec![

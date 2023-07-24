@@ -22,7 +22,7 @@ use crate::tasks::Task;
 
 /// This program simulates a bosonic system exactly. It takes
 /// a task config in *.yaml format and produces results
-/// also in *.yaml format.
+/// in the pickle format.
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
