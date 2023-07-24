@@ -1,5 +1,0 @@
-/target
-/task_examples
-.gitignore
-.dockerignore
-Dockerfile
